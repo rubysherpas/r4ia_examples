@@ -1,4 +1,6 @@
 <% title(@project.name, "Projects") %>
 
 <h1><%= @project.name %></h1>
+<%= link_to "Edit Project", edit_project_path(@project) %>
+
 <p><%= @project.description %></p>
