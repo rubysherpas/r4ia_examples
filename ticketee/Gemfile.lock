@@ -60,6 +60,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.4.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -175,6 +180,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.4)
   coffee-rails (~> 4.1.0)
+  factory_girl_rails (~> 4.5)
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.1)
