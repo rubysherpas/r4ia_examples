@@ -1,0 +1,15 @@
+@media(min-width: $screen-sm-min) {
+  header {
+    h1, h2, h3, h4, h5, h6 {
+      max-width: 55%;
+    }
+  }
+
+  ul.actions {
+    position: absolute;
+    bottom: -2px;
+    right: 2px;
+    max-width: 45%;
+    text-align: right;
+  }
+}
