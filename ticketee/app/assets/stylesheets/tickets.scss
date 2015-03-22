@@ -1,3 +1,19 @@
-// Place all the styles related to the tickets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#attributes {
+  @extend .table;
+  @extend .table-condensed;
+  width: 65%;
+
+  th {
+    width: 35%;
+  }
+
+  tr:first-child {
+    td, th {
+      border-top: 0px;
+    }
+  }
+
+  td, th {
+    line-height: 24px !important;
+  }
+}
