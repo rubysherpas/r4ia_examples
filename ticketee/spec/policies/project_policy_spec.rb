@@ -6,6 +6,31 @@ describe ProjectPolicy do
 
   subject { ProjectPolicy }
 
+  context "policy_scope" do
+    subject { Pundit.policy_scope(user, Project) }
+
+    let!(:project) { FactoryGirl.create :project }
+    let(:user) { FactoryGirl.create :user }
+
+    it "is empty for anonymous users" do
+      expect(Pundit.policy_scope(nil, Project)).to be_empty
+    end
+
+    it "includes projects a user is allowed to view" do
+      assign_role!(user, :viewer, project)
+      expect(subject).to include(project)
+    end
+
+    it "doesn't include projects a user is not allowed to view" do
+      expect(subject).to be_empty
+    end
+
+    it "returns all projects for admins" do
+      user.admin = true
+      expect(subject).to include(project)
+    end
+  end
+
   permissions :show? do
     let(:user) { FactoryGirl.create :user }
     let(:project) { FactoryGirl.create :project }
