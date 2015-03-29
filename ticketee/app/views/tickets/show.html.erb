@@ -11,9 +11,12 @@
         <li><%= link_to "Edit Ticket", [:edit, @project, @ticket],
           class: "edit" %></li>
       <% end %>
-      <li><%= link_to "Delete Ticket", [@project, @ticket], method: :delete,
-        data: { confirm: "Are you sure you want to delete this ticket?"},
-        class: "delete" %></li>
+      <% if policy(@ticket).destroy? %>
+        <li><%= link_to "Delete Ticket", [@project, @ticket],
+          method: :delete,
+          data: { confirm: "Are you sure you want to delete this ticket?" },
+          class: "delete" %></li>
+      <% end %>
     </ul>
   </header>
 
