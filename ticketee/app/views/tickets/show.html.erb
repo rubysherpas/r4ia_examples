@@ -7,8 +7,10 @@
     <h2><%= @ticket.name %></h2>
 
     <ul class="actions">
-      <li><%= link_to "Edit Ticket", [:edit, @project, @ticket],
-        class: "edit" %></li>
+      <% if policy(@ticket).update? %>
+        <li><%= link_to "Edit Ticket", [:edit, @project, @ticket],
+          class: "edit" %></li>
+      <% end %>
       <li><%= link_to "Delete Ticket", [@project, @ticket], method: :delete,
         data: { confirm: "Are you sure you want to delete this ticket?"},
         class: "delete" %></li>
