@@ -3,5 +3,22 @@
   <%= f.input :password %>
   <%= f.input :admin, label: "Is an admin?" %>
 
+  <header>
+    <h2>Roles</h2>
+  </header>
+
+  <table class="roles">
+    <% projects.each do |project| %>
+      <tr>
+        <th><%= label_tag dom_id(project), project.name %></th>
+        <td>
+          <%= select_tag dom_id(project), options_for_select(roles,
+            user.role_on(project)), name: "roles[#{project.id}]",
+            include_blank: true %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
