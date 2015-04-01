@@ -1,6 +1,7 @@
 <%= simple_form_for([project, ticket]) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.input :attachment, as: :file, label: "File" %>
 
   <%= f.button :submit, class: "btn-primary" %>
 <% end %>
