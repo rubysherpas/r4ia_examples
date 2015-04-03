@@ -42,5 +42,8 @@ RSpec.feature "Users can comment on tickets" do
     within("#ticket .state") do
       expect(page).to have_content "Open"
     end
+    within("#comments") do
+      expect(page).to have_content "state changed to Open"
+    end
   end
 end
