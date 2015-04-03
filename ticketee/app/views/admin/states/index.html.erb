@@ -8,6 +8,13 @@
 
 <ul id="states">
   <% @states.each do |state| %>
-    <li><%= render "states/state", state: state %></li>
+  <li>
+    <%= render "states/state", state: state %>
+    <% if state.default? %>
+      (Default)
+    <% else %>
+      <%= link_to "Make Default", make_default_admin_state_path(state) %>
+    <% end %>
+  </li>
   <% end %>
 </ul>
