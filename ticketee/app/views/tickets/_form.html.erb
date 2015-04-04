@@ -1,7 +1,7 @@
 <%= simple_form_for([project, ticket]) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :tag_names, label: "Tags" %>
+  <%= render "tags/form", f: f %>
 
   <div id="attachments">
     <h3>Attachments</h3>
