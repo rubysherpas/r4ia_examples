@@ -2,13 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_ticket
 
   def create
-    whitelisted_params = comment_params
-
-    unless policy(@ticket).change_state?
-      whitelisted_params.delete(:state_id)
-    end
-
-    @comment = @ticket.comments.build(whitelisted_params)
+    @comment = @ticket.comments.build(sanitized_parameters)
     @comment.author = current_user
     authorize @comment, :create?
 
@@ -30,5 +24,19 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:text, :state_id, :tag_names)
+  end
+
+  def sanitized_parameters
+    whitelisted_params = comment_params
+
+    unless policy(@ticket).change_state?
+      whitelisted_params.delete(:state_id)
+    end
+
+    unless policy(@ticket).tag?
+      whitelisted_params.delete(:tag_names)
+    end
+
+    whitelisted_params
   end
 end
