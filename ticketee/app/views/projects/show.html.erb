@@ -23,6 +23,14 @@
   <h2>Tickets</h2>
 
   <ul class="actions">
+    <li>
+      <%= form_tag search_project_tickets_path(@project), method: :get,
+        class: "form-inline" do %>
+        <%= label_tag "search", "Search", class: "sr-only" %>
+        <%= text_field_tag "search", params[:search], class: "form-control" %>
+        <%= submit_tag "Search", class: "btn btn-default" %>
+      <% end %>
+    </li>
     <% if policy(Ticket.new(project: @project)).create? %>
       <li><%= link_to "New Ticket", new_project_ticket_path(@project),
         class: "new" %></li>
@@ -31,7 +39,7 @@
 </header>
 
 <ul id="tickets">
-  <% @project.tickets.each do |ticket| %>
+  <% @tickets.each do |ticket| %>
     <li>
       #<%= ticket.id %> -
       <%= link_to ticket.name, [@project, ticket] %>

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/radar/searcher.git
+  revision: c2975124e11677825481ced9539f16f0cb0640de
+  specs:
+    searcher (0.0.7)
+      activerecord (~> 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -232,6 +239,7 @@ DEPENDENCIES
   rspec-rails (~> 3.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  searcher!
   selenium-webdriver (~> 2.45)
   simple_form (~> 3.1.0)
   spring
