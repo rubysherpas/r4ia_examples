@@ -35,6 +35,12 @@
         <td><%= render @ticket.state %></td>
       </tr>
     <% end %>
+    <% if @ticket.tags.any? %>
+      <tr id="tags">
+        <th>Tags:</th>
+        <td><%= render @ticket.tags %></td>
+      </tr>
+    <% end %>
   </table>
 
   <%= simple_format(@ticket.description) %>
