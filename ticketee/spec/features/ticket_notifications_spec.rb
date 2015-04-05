@@ -11,12 +11,12 @@ RSpec.feature "Users can receive notifications about ticket updates" do
   before do
     assign_role!(alice, :manager, project)
     assign_role!(bob, :manager, project)
+
+    login_as(bob)
+    visit project_ticket_path(project, ticket)
   end
 
   scenario "ticket authors automatically receive notifications" do
-    login_as(bob)
-    visit project_ticket_path(project, ticket)
-
     fill_in "Text", with: "Is it out yet?"
     click_button "Create Comment"
 
