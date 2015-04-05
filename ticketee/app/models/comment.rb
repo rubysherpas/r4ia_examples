@@ -13,6 +13,7 @@ class Comment < ActiveRecord::Base
   before_create :set_previous_state
   after_create :set_ticket_state
   after_create :associate_tags_with_ticket
+  after_create :author_watches_ticket
 
   attr_accessor :tag_names
 
@@ -32,6 +33,12 @@ class Comment < ActiveRecord::Base
       tag_names.split.each do |name|
         ticket.tags << Tag.find_or_create_by(name: name)
       end
+    end
+  end
+
+  def author_watches_ticket
+    if author.present? && !ticket.watchers.include?(author)
+      ticket.watchers << author
     end
   end
 end
