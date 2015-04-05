@@ -48,3 +48,30 @@ blockquote.comment p {
     }
   }
 }
+
+.watch, .unwatch {
+  @extend .btn;
+  @extend .btn-xs;
+  font-weight: bold;
+
+  &:before {
+    font-family: "FontAwesome";
+    padding-right: 0.5em;
+  }
+}
+
+.watch {
+  @extend .btn-success;
+
+  &:before {
+    @extend .fa-eye;
+  }
+}
+
+.unwatch {
+  @extend .btn-danger;
+
+  &:before {
+    @extend .fa-eye-slash;
+  }
+}
