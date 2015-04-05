@@ -2,5 +2,12 @@ language: ruby
 rvm: 2.2.1
 script: rspec
 before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+deploy:
+  provider: heroku
+  api_key:
+    secure: Q5efxQBnGeFY1wDm0pTpZaQKwRofw4jwCj7C4U5/ylzToeVq06O2UOQdcJc6iyJT/KGQ48OgU8ksFls61+f8aDqB8iFwvaTcWqDIBtgCsS8sA+YH57ceWT7Z2P/4tW0Y0zsPOnII240TMB+hp1bnwwMXCpz80IHMQmXtgE0IhoM=
+  app: r4ia-ticketee
+  on:
+    repo: rubysherpas/r4ia_examples
